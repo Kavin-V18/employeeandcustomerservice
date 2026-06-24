@@ -1,6 +1,6 @@
 package com.example.EmployeeCustomerModule.controller;
 
-import com.example.EmployeeCustomerModule.entity.Customer;
+import com.example.EmployeeCustomerModule.dto.CustomerDto;
 import com.example.EmployeeCustomerModule.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -17,23 +17,23 @@ public class CustomerController {
            this.customerService=customerService;
        }
     @GetMapping()
-    public List<Customer> getNotifications() {
+    public List<CustomerDto> getCustomer() {
         return customerService.getAllCustomers();
     }
     @PostMapping()
-    public  Customer createNotification(@Valid  @RequestBody Customer customer){
-        return customerService.createCustomer(customer);
+    public  CustomerDto createCustomer(@Valid  @RequestBody CustomerDto customerDto){
+        return customerService.createCustomer(customerDto);
     }
     @GetMapping("/{id}")
-    public Customer getNotificationById(@PathVariable int id){
+    public CustomerDto getCustomerById(@PathVariable int id){
         return customerService.getCustomerById(id);
     }
     @PostMapping("/{id}")
-    public Customer updateNotification(@PathVariable int id,@Valid @RequestBody Customer customer){
-        return  customerService.updateCustomer(id, customer);
+    public CustomerDto updateCustomer(@PathVariable int id,@Valid @RequestBody CustomerDto customerDto){
+        return  customerService.updateCustomer(id, customerDto);
     }
     @DeleteMapping("/{id}")
-    public String deleteNotification(@PathVariable int id){
+    public String deleteCustomer(@PathVariable int id){
         return customerService.deleteCustomer(id);
     }
 }

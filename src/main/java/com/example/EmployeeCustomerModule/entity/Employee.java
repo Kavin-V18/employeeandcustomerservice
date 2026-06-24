@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 
@@ -28,9 +30,18 @@ public class Employee {
     @Column( columnDefinition = "DATE CHECK (joining_date <= CURRENT_DATE)")
     private LocalDate joining_date;
     //image
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] profile_image;
     @ColumnDefault("true")
     private  boolean is_active;
     //foreign key for plant
      //need to map
      private ManufacturingPlant manufacturingPlant;
+     @CreationTimestamp
+     private LocalDate created_at;
+     @UpdateTimestamp
+     private LocalDate last_modified_at;
+     private String created_by;
+     private String last_modified_by;
 }

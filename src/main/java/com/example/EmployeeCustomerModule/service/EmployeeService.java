@@ -1,14 +1,15 @@
 package com.example.EmployeeCustomerModule.service;
 
-import com.example.EmployeeCustomerModule.entity.Employee;
+import com.example.EmployeeCustomerModule.dto.EmployeeDto;
+
 
 import java.util.List;
 
 public interface EmployeeService {
 
-    Employee createEmployee(Employee employee);
-    Employee getEmployeeById(int id);
-    List<Employee>  getAllEmployee();
-    Employee  updateEmployee(int id,Employee employee);
+    EmployeeDto createEmployee(EmployeeDto employeeDto);
+    EmployeeDto getEmployeeById(int id);
+    List<EmployeeDto>  getAllEmployee();
+    EmployeeDto  updateEmployee(int id,EmployeeDto employeeDto);
     void deleteEmployee(int id);
 }
