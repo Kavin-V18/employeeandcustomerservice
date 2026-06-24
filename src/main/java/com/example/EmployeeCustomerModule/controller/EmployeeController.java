@@ -1,36 +1,38 @@
 package com.example.EmployeeCustomerModule.controller;
 
-import com.example.EmployeeCustomerModule.entity.Employee;
+import com.example.EmployeeCustomerModule.dto.EmployeeDto;
 import com.example.EmployeeCustomerModule.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RequestMapping()
+@RequestMapping("/employee")
 public class EmployeeController {
     private final EmployeeService employeeService;
     public EmployeeController(EmployeeService employeeService){
         this.employeeService=employeeService;
     }
     @GetMapping()
-    public List<Employee> getNotifications() {
+    public List<EmployeeDto> getEmployee() {
         return employeeService.getAllEmployee();
     }
     @PostMapping()
-    public  Employee createNotification(@RequestBody Employee notification){
-        return employeeService.createEmployee(notification);
+    public  EmployeeDto createEmployee(@Valid @RequestBody EmployeeDto employeeDto){
+        return employeeService.createEmployee(employeeDto);
     }
     @GetMapping("/{id}")
-    public Employee getNotificationById(@PathVariable int id){
+    public EmployeeDto getEmployeeById(@PathVariable int id){
         return employeeService.getEmployeeById(id);
     }
     @PostMapping("/{id}")
-    public Employee updateNotification(@PathVariable int id,@RequestBody Employee notification){
-        return  employeeService.updateEmployee(id, notification);
+    public EmployeeDto updateEmployee(@PathVariable int id,@Valid @RequestBody EmployeeDto employeeDto){
+        return  employeeService.updateEmployee(id, employeeDto);
     }
-    public void deleteNotification(@PathVariable int id){
+    public String deleteEmployee(@PathVariable int id){
          employeeService.deleteEmployee(id);
+         return "deleted successfully";
     }
 }
