@@ -3,19 +3,16 @@ package com.example.EmployeeCustomerModule.controller;
 import com.example.EmployeeCustomerModule.dto.CustomerDto;
 import com.example.EmployeeCustomerModule.service.CustomerService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/customer")
+@RequiredArgsConstructor
 public class CustomerController {
 
        private final  CustomerService customerService;
-
-       public CustomerController(CustomerService customerService){
-           this.customerService=customerService;
-       }
     @GetMapping()
     public List<CustomerDto> getCustomer() {
         return customerService.getAllCustomers();

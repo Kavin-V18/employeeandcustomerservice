@@ -5,20 +5,16 @@ import com.example.EmployeeCustomerModule.entity.Customer;
 import com.example.EmployeeCustomerModule.repository.CustomerRepository;
 import com.example.EmployeeCustomerModule.util.CustomerMapper;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
+@RequiredArgsConstructor
 public class CustomerServiceImp implements CustomerService {
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
-
-    public CustomerServiceImp(CustomerRepository customerRepository, CustomerMapper customerMapper) {
-        this.customerRepository = customerRepository;
-        this.customerMapper = customerMapper;
-    }
-
     @Override
     public CustomerDto createCustomer(CustomerDto customerDto) {
         Customer entity = customerMapper.toEntity(customerDto); // DTO -> Entity
