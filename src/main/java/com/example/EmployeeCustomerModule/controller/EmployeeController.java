@@ -3,6 +3,7 @@ package com.example.EmployeeCustomerModule.controller;
 import com.example.EmployeeCustomerModule.dto.EmployeeDto;
 import com.example.EmployeeCustomerModule.service.EmployeeService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,11 +11,9 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/employee")
+@RequiredArgsConstructor
 public class EmployeeController {
     private final EmployeeService employeeService;
-    public EmployeeController(EmployeeService employeeService){
-        this.employeeService=employeeService;
-    }
     @GetMapping()
     public List<EmployeeDto> getEmployee() {
         return employeeService.getAllEmployee();

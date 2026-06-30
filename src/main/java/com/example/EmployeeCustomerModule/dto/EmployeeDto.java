@@ -1,6 +1,5 @@
 package com.example.EmployeeCustomerModule.dto;
 
-import com.example.PlantsCarModule.entity.ManufacturingPlant;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +13,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class EmployeeDto {
 
-    private int id;
     private String employee_code;
     @NotNull
     private String full_name;
@@ -29,9 +27,9 @@ public class EmployeeDto {
     @ColumnDefault("true")
     private  boolean is_active;
     //foreign key for plant //need to map
-    private ManufacturingPlant manufacturingPlant;
+    private Long manufacturingPlant;
     private LocalDate created_at;
     private LocalDate last_modified_at;
-    private String created_by;
-    private String last_modified_by;
+    private Long created_by;
+    private Long last_modified_by;
 }
