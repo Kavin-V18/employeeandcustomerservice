@@ -1,6 +1,6 @@
-package com.example.EmployeeCustomerModule.repository;
+package com.example.employee_customer.repository;
 
-import com.example.EmployeeCustomerModule.entity.Customer;
+import com.example.employee_customer.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.example.EmployeeCustomerModule.dto;
+package com.example.employee_customer.dto;
 
 
 import jakarta.validation.constraints.Email;
@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
-
 import java.time.LocalDateTime;
 
 @Data
@@ -17,18 +16,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CustomerDto {
     @NotNull
-    private String customer_name;
+    private String customerName;
     @NotNull
-    private String contact_number;
+    private String contactNumber;
     @Email(message = "Provide a Valid Email")
     @NotNull
     private String email;
     @NotNull
     private String address;
     @ColumnDefault("true")
-    private boolean is_active;
-    private Long created_by;
-    private Long last_modified_by;
-    private LocalDateTime created_at;
-    private LocalDateTime last_modified_at;
+    private boolean active;
+    private Long createdBy;
+    private Long lastModifiedBy;
+    private LocalDateTime createdAt;
+    private LocalDateTime lastModifiedAt;
 }

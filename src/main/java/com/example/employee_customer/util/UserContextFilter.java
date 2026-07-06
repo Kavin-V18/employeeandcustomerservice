@@ -1,4 +1,4 @@
-package com.example.EmployeeCustomerModule.util;
+package com.example.employee_customer.util;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

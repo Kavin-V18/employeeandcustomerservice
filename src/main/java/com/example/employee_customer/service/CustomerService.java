@@ -1,6 +1,6 @@
-package com.example.EmployeeCustomerModule.service;
+package com.example.employee_customer.service;
 
-import com.example.EmployeeCustomerModule.dto.CustomerDto;
+import com.example.employee_customer.dto.CustomerDto;
 
 import java.util.List;
 

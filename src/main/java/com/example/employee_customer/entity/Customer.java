@@ -1,6 +1,7 @@
-package com.example.EmployeeCustomerModule.entity;
+package com.example.employee_customer.entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
 import org.hibernate.annotations.*;
@@ -13,30 +14,34 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "customer",schema = "public")
 @Data
-@SoftDelete(strategy = SoftDeleteType.DELETED, columnName = "deleted")
+@EntityListeners(AuditingEntityListener.class)
+@SoftDelete(strategy = SoftDeleteType.ACTIVE)
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false)
-    private String customer_name;
-    @Column(nullable = false)
-    private String contact_number;
+    @Column(nullable = false,name="customer_name")
+    private String customerName;
+    @Column(nullable = false,name="contact_number")
+    private String contactNumber;
     @Email(message = "Provide a Valid Email")
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
     private String address;
     @ColumnDefault("true")
-    private boolean is_active;
+    @Column(name="is_active")
+    private boolean active;
     @CreatedBy
-    private Long created_by;
+    @Column(name="created_by")
+    private Long createdBy;
     @LastModifiedBy
-    private Long last_modified_by;
+    @Column(name="last_modified_by")
+    private Long lastModifiedBy;
     @CreationTimestamp
-    private LocalDateTime created_at;
+    @Column(name="created_At")
+    private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime last_modified_at;
-    @Column(name = "deleted", nullable = false)
-    private boolean deleted;
+    @Column(name="last_modified_at")
+    private LocalDateTime lastModifiedAt;
 }

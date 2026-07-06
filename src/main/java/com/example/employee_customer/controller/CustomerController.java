@@ -1,7 +1,7 @@
-package com.example.EmployeeCustomerModule.controller;
+package com.example.employee_customer.controller;
 
-import com.example.EmployeeCustomerModule.dto.CustomerDto;
-import com.example.EmployeeCustomerModule.service.CustomerService;
+import com.example.employee_customer.dto.CustomerDto;
+import com.example.employee_customer.service.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

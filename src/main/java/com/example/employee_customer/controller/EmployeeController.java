@@ -1,15 +1,15 @@
-package com.example.EmployeeCustomerModule.controller;
+package com.example.employee_customer.controller;
 
-import com.example.EmployeeCustomerModule.dto.EmployeeDto;
-import com.example.EmployeeCustomerModule.service.EmployeeService;
+import com.example.employee_customer.dto.EmployeeDto;
+import com.example.employee_customer.service.EmployeeService;
+import com.example.employee_customer.util.EmployeeResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/employee")
 @RequiredArgsConstructor
 public class EmployeeController {
@@ -23,15 +23,20 @@ public class EmployeeController {
         return employeeService.createEmployee(employeeDto);
     }
     @GetMapping("/{id}")
-    public EmployeeDto getEmployeeById(@PathVariable int id){
+    public EmployeeResponse getEmployeeById(@PathVariable int id){
         return employeeService.getEmployeeById(id);
     }
     @PostMapping("/{id}")
     public EmployeeDto updateEmployee(@PathVariable int id,@Valid @RequestBody EmployeeDto employeeDto){
         return  employeeService.updateEmployee(id, employeeDto);
     }
+    @DeleteMapping("/{id}")
     public String deleteEmployee(@PathVariable int id){
          employeeService.deleteEmployee(id);
          return "deleted successfully";
+    }
+    @GetMapping("/{id}/exists")
+    Boolean checkEmployeeExists(@PathVariable("id") int id){
+        return employeeService.existById(id);
     }
 }
