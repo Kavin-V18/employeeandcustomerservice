@@ -1,5 +1,9 @@
-package com.example.EmployeeCustomerModule.util;
+package com.example.employee_customer.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserContext {
     private static final ThreadLocal<Long> USER =
             new ThreadLocal<>();

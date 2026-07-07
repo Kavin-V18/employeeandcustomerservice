@@ -1,4 +1,4 @@
-package com.example.EmployeeCustomerModule.dto;
+package com.example.employee_customer.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -13,23 +13,23 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class EmployeeDto {
 
-    private String employee_code;
+    private String employeeCode;
     @NotNull
-    private String full_name;
+    private String fullName;
     @NotNull
     private String designation;
-    private LocalDate date_of_birth;
-    private LocalDate joining_date;
+    private LocalDate dateOfBirth;
+    private LocalDate joiningDate;
     //image
 //    @Lob
 //    @Column(columnDefinition = "LONGBLOB")
-//    private byte[] profile_image;
+    private String profileImage;
     @ColumnDefault("true")
-    private  boolean is_active;
-    //foreign key for plant //need to map
+    private  boolean active;
+    //foreign key for plant
     private Long manufacturingPlant;
-    private LocalDate created_at;
-    private LocalDate last_modified_at;
-    private Long created_by;
-    private Long last_modified_by;
+    private LocalDate createdAt;
+    private LocalDate lastModifiedAt;
+    private Long createdBy;
+    private Long lastModifiedBy;
 }

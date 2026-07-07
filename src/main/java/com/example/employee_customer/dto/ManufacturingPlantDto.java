@@ -1,4 +1,4 @@
-package com.example.EmployeeCustomerModule.dto;
+package com.example.employee_customer.dto;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -18,15 +18,15 @@ public class ManufacturingPlantDto {
     private String code;
     private String location;
     @Min(1)
-    private int capacity_per_day;
+    private Integer capacityPerDay;
     @ColumnDefault("true")
-    private boolean is_active;
+    private boolean active;
     @NotNull
-    private LocalDateTime created_at;
+    private LocalDate createdAt;
     @NotNull
-    private Long created_by;
+    private Long createdBy;
     @NotNull
-    private LocalDateTime last_modified_at;
+    private LocalDate lastModifiedAt;
     @NotNull
-    private Long last_modified_by;
+    private Long lastModifiedBy;
 }

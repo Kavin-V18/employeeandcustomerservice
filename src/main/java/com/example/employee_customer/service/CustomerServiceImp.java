@@ -1,9 +1,9 @@
-package com.example.EmployeeCustomerModule.service;
+package com.example.employee_customer.service;
 
-import com.example.EmployeeCustomerModule.dto.CustomerDto;
-import com.example.EmployeeCustomerModule.entity.Customer;
-import com.example.EmployeeCustomerModule.repository.CustomerRepository;
-import com.example.EmployeeCustomerModule.util.CustomerMapper;
+import com.example.employee_customer.dto.CustomerDto;
+import com.example.employee_customer.entity.Customer;
+import com.example.employee_customer.repository.CustomerRepository;
+import com.example.employee_customer.util.CustomerMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,9 +23,8 @@ public class CustomerServiceImp implements CustomerService {
     }
     @Override
     public CustomerDto getCustomerById(int id) {
-        Customer existing=customerRepository.findById(id).orElseThrow(()->new EntityNotFoundException("No data present in this id"));
-        CustomerDto supplierDtos= customerMapper.toDto(existing);
-        return  supplierDtos;
+        Customer existing=customerRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return customerMapper.toDto(existing);
     }
     @Override
     public List<CustomerDto> getAllCustomers() {
@@ -33,18 +32,18 @@ public class CustomerServiceImp implements CustomerService {
     }
     @Override
     public CustomerDto updateCustomer(int id, CustomerDto customerDto) {
-        Customer existing=customerRepository.findById(id).orElseThrow(()->new EntityNotFoundException("No data present in this id"));
+        Customer existing=customerRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         existing.setEmail(customerDto.getEmail());
-        existing.setContact_number(customerDto.getContact_number());
-        existing.setCustomer_name(customerDto.getCustomer_name());
+        existing.setContactNumber(customerDto.getContactNumber());
+        existing.setCustomerName(customerDto.getCustomerName());
         existing.setAddress(customerDto.getAddress());
-        existing.set_active(customerDto.is_active());
+        existing.setActive(customerDto.isActive());
         Customer updatedEntity=customerRepository.save(existing);
         return  customerMapper.toDto(updatedEntity);
     }
     @Override
     public String deleteCustomer(int id) {
-        Customer existing=customerRepository.findById(id).orElseThrow(()->new EntityNotFoundException());
+        customerRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         customerRepository.deleteById(id);
         return "deleted successfully";
     }
